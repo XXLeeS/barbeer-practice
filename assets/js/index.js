@@ -1,22 +1,22 @@
 
 function isInRegion(el, upperBound, lowerBound){
-    return el.getBoundingClientRect().top < upperBound && el.getBoundingClientRect().top > lowerBound;
+    return el.getBoundingClientRect().top <= upperBound && el.getBoundingClientRect().top > lowerBound;
 }
 function isEndRegion(el, lowerBound){
-    return el.getBoundingClientRect().top < lowerBound;
+    return el.getBoundingClientRect().top <= lowerBound;
 }
 function getOffsetPercent(el, top, bottom){
     return (top - el.getBoundingClientRect().top) / (top - bottom);
 }
-function getOffsetLeft( elem ){
-    var offsetLeft = 0;
-    do {
-      if ( !isNaN( elem.offsetLeft ) )
-      {
-          offsetLeft += elem.offsetLeft;
+function getOffsetTopAbs(el){
+    let offsetTop = 0;
+    do{
+      if (!isNaN(el.offsetTop)){
+          offsetTop += el.offsetTop;
       }
-    } while( elem = elem.offsetParent );
-    return offsetLeft;
+    }while( el = el.offsetParent );
+
+    return offsetTop;
 }
 
 
@@ -25,9 +25,8 @@ window.addEventListener('scroll', (e) => {
     {
         let beer = document.querySelector('#beer');
 
-        let upperBound = -100;
-        let lowerBound = -(document.querySelector('#cheers .block--two').offsetTop + 
-                        document.querySelector('#cheers').offsetTop);
+        let upperBound = 0;
+        let lowerBound = -getOffsetTopAbs(document.querySelector('#cheers .block--two')) + 100;
 
         if(isInRegion(document.body, upperBound, lowerBound)){
             let offset = -(document.body.getBoundingClientRect().top - upperBound);
@@ -86,9 +85,9 @@ window.addEventListener('scroll', (e) => {
     featureElements.forEach((el, i) => {
         let element = document.querySelector(`#feature ${el}`);
 
-        // second feature offset another direction
         let upperBound = featureUpperBound + i*50;
         let lowerBound = featureLowerBound + i*50;
+        // second feature offset another direction
         let offset = (i==2||i==3) ? -featureOffset : featureOffset;
         
         if(isInRegion(element, upperBound, lowerBound)){
@@ -103,6 +102,58 @@ window.addEventListener('scroll', (e) => {
     });
     
 
-    
+    // empty hand moving
+    let handCssTranslateX = -525;
+    {
+        let hand_wrapper = document.querySelector('#cheers .hand-wrapper');
+        
+        let upperBound = -getOffsetTopAbs(document.querySelector('#cheers .block--one')) + 400;
+        let lowerBound = -getOffsetTopAbs(document.querySelector('#cheers .block--one')) + 180;
+        let offset = 150;
+
+        if(isInRegion(document.body, upperBound, lowerBound)){
+            hand_wrapper.style.transform = `translateX(${handCssTranslateX + offset*getOffsetPercent(document.body, upperBound, lowerBound)}px)`;
+        }else if(isEndRegion(document.body, lowerBound)){
+            // hand_wrapper.style.transform = `translateX(-375px)`;
+        }else{
+            hand_wrapper.removeAttribute('style');            
+        }
+    }
+    {
+        let hand_wrapper = document.querySelector('#cheers .hand-wrapper');
+        
+        let upperBound = -getOffsetTopAbs(document.querySelector('#cheers .block--one')) + 180;
+        let lowerBound = -getOffsetTopAbs(document.querySelector('#cheers .block--two')) + 100;
+        let offsetTopAbs = -getOffsetTopAbs(hand_wrapper);
+
+        if(isInRegion(document.body, upperBound, lowerBound)){
+            hand_wrapper.querySelector('.empty-hand--shadow').style.opacity = 1;
+            let offset = -(document.body.getBoundingClientRect().top - upperBound);
+            hand_wrapper.style.transform = `translate(-375px, ${offset}px)`;
+        }else if(isEndRegion(document.body, lowerBound)){
+            hand_wrapper.style.transform = `translate(-375px, ${-(lowerBound - upperBound)}px)`;
+        }else{
+            hand_wrapper.querySelector('.empty-hand--shadow').style.opacity = 0;
+        }
+    }
+
+    // another hand cheers
+    {
+        let another_hand = document.querySelector(`#cheers .another-hand`);
+
+        let lowerBound = -getOffsetTopAbs(document.querySelector('#cheers .block--two')) + 100;
+        
+        if(isEndRegion(document.body, lowerBound)){
+            another_hand.classList.remove('back');
+            another_hand.classList.add('cheered');
+        }else{
+            another_hand.classList.add('back');
+            another_hand.addEventListener("webkitAnimationEnd", (event) => {
+                if(event.animationName == 'back'){
+                    another_hand.classList.remove('cheered');
+                }
+            });
+        }
+    }
 });
 

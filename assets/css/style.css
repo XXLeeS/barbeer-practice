@@ -536,36 +536,46 @@ body {
       right: 0;
       margin: auto;
       top: 50px;
-      transform: translateX(250px);
+      transform: translateX(400px);
       width: 227px;
       height: 245px;
       background-image: url("../img/index/03_cheers/text_1.png");
       background-position: center top;
       background-size: 100% auto;
       background-repeat: no-repeat; }
-    #cheers .block.block--one .empty-hand {
+    #cheers .block.block--one .hand-wrapper {
       position: absolute;
       left: 0;
       right: 0;
       margin: auto;
       top: 100px;
-      transform: translateX(-375px);
       width: 1189px;
       height: 963px;
-      background-image: url("../img/index/03_cheers/empty_hand.png");
-      background-position: center top;
-      background-size: 100% auto;
-      background-repeat: no-repeat;
+      transform: translateX(-525px);
       z-index: 10; }
+      #cheers .block.block--one .hand-wrapper .empty-hand {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("../img/index/03_cheers/empty_hand.png");
+        background-position: center top;
+        background-size: 100% auto;
+        background-repeat: no-repeat; }
+        #cheers .block.block--one .hand-wrapper .empty-hand.empty-hand--shadow {
+          background-image: url("../img/index/03_cheers/empty_hand_shadow.png");
+          opacity: 0; }
   #cheers .block.block--two {
-    background-image: url("../img/index/03_cheers/background_2.png"); }
+    background-image: url("../img/index/03_cheers/background_2.png");
+    overflow: hidden; }
     #cheers .block.block--two .text--two {
       position: absolute;
       left: 0;
       right: 0;
       margin: auto;
       top: 50px;
-      transform: translateX(-300px);
+      transform: translateX(-375px);
       width: 243px;
       height: 245px;
       background-image: url("../img/index/03_cheers/text_2.png");
@@ -578,13 +588,31 @@ body {
       right: 0;
       margin: auto;
       top: 0;
-      transform: translateX(500px);
+      transform: translateX(600px);
       width: 555px;
       height: 813px;
       background-image: url("../img/index/03_cheers/another_hand.png");
       background-position: center top;
       background-size: 100% auto;
       background-repeat: no-repeat; }
+
+@keyframes cheer {
+  0% {
+    transform: translateX(600px); }
+  50% {
+    transform: translateX(375px); }
+  100% {
+    transform: translateX(450px) rotate(5deg); } }
+
+@keyframes back {
+  from {
+    transform: translateX(425px) rotate(5deg); }
+  to {
+    transform: translateX(600px); } }
+      #cheers .block.block--two .another-hand.cheered {
+        animation: cheer .2s linear forwards; }
+      #cheers .block.block--two .another-hand.back {
+        animation: back .3s linear forwards; }
 
 #campaign {
   background-image: url("../img/index/04_campaign/background.png");
