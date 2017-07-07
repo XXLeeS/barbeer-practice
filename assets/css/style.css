@@ -389,12 +389,23 @@ template {
 [hidden] {
   display: none; }
 
+@font-face {
+  font-family: 'Noto Sans TC Bold';
+  src: url("../font/NotoSansTC-Bold.otf"); }
+
+html * {
+  font-family: 'Noto Sans TC Bold'; }
+
 body {
   overflow-x: hidden;
   font-family: 'Noto Sans TC', sans-serif; }
 
 .container {
   width: 100vw; }
+  .container .row {
+    position: relative;
+    width: 100vw;
+    overflow: hidden; }
 
 #beer {
   position: absolute;
@@ -409,11 +420,6 @@ body {
   background-size: 100% auto;
   background-repeat: no-repeat;
   z-index: 50; }
-
-.row {
-  position: relative;
-  width: 100vw;
-  overflow: hidden; }
 
 #banner {
   position: relative;
@@ -530,7 +536,7 @@ body {
   background-repeat: no-repeat; }
   #cheers .block.block--one {
     background-image: url("../img/index/03_cheers/background_1.png"); }
-    #cheers .block.block--one .text--one {
+    #cheers .block.block--one .text {
       position: absolute;
       left: 0;
       right: 0;
@@ -539,10 +545,10 @@ body {
       transform: translateX(400px);
       width: 227px;
       height: 245px;
-      background-image: url("../img/index/03_cheers/text_1.png");
-      background-position: center top;
-      background-size: 100% auto;
-      background-repeat: no-repeat; }
+      font-size: 36px;
+      font-style: italic; }
+      #cheers .block.block--one .text p {
+        opacity: 0; }
     #cheers .block.block--one .hand-wrapper {
       position: absolute;
       left: 0;
@@ -569,7 +575,7 @@ body {
   #cheers .block.block--two {
     background-image: url("../img/index/03_cheers/background_2.png");
     overflow: hidden; }
-    #cheers .block.block--two .text--two {
+    #cheers .block.block--two .text {
       position: absolute;
       left: 0;
       right: 0;
@@ -578,10 +584,10 @@ body {
       transform: translateX(-375px);
       width: 243px;
       height: 245px;
-      background-image: url("../img/index/03_cheers/text_2.png");
-      background-position: center top;
-      background-size: 100% auto;
-      background-repeat: no-repeat; }
+      font-size: 36px;
+      font-style: italic; }
+      #cheers .block.block--two .text p {
+        opacity: 0; }
     #cheers .block.block--two .another-hand {
       position: absolute;
       left: 0;

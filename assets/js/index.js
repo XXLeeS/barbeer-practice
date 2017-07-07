@@ -155,5 +155,18 @@ window.addEventListener('scroll', (e) => {
             });
         }
     }
+
+    document.querySelectorAll('#cheers .text p').forEach((el) => {
+        let upperBound = 400;
+        let lowerBound = 300;
+
+        if(isInRegion(el, upperBound, lowerBound)){
+            el.style.opacity = getOffsetPercent(el, upperBound, lowerBound);
+        }else if(isEndRegion(el, lowerBound)){
+            el.style.opacity = 1;
+        }else{
+            el.removeAttribute('style');
+        }
+    })
 });
 

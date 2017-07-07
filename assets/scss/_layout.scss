@@ -1,4 +1,13 @@
 // @import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+@font-face{
+    font-family: 'Noto Sans TC Bold';
+    src: url("../font/NotoSansTC-Bold.otf")
+
+}
+
+html *{
+    font-family: 'Noto Sans TC Bold';
+}
 
 body{
     overflow-x: hidden;
@@ -7,4 +16,10 @@ body{
 
 .container{
     width: 100vw;
+
+    .row{
+        position: relative;
+        width: 100vw;
+        overflow: hidden;
+    }
 }
