@@ -472,6 +472,19 @@ body {
     background-size: 100% auto;
     background-repeat: no-repeat;
     opacity: 0; }
+  #feature .beer-shadow {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: -580px;
+    transform: translateX(10px);
+    width: 332px;
+    height: 552px;
+    background-image: url("../img/index/02_feature/beer_shadow.png");
+    background-position: center top;
+    background-size: 100% auto;
+    background-repeat: no-repeat; }
   #feature .feature-container {
     position: absolute;
     left: 0;
@@ -535,7 +548,8 @@ body {
   background-size: 1920px auto;
   background-repeat: no-repeat; }
   #cheers .block.block--one {
-    background-image: url("../img/index/03_cheers/background_1.png"); }
+    background-image: url("../img/index/03_cheers/background_1.png");
+    z-index: 1; }
     #cheers .block.block--one .text {
       position: absolute;
       left: 0;
@@ -573,8 +587,7 @@ body {
           background-image: url("../img/index/03_cheers/empty_hand_shadow.png");
           opacity: 0; }
   #cheers .block.block--two {
-    background-image: url("../img/index/03_cheers/background_2.png");
-    overflow: hidden; }
+    background-image: url("../img/index/03_cheers/background_2.png"); }
     #cheers .block.block--two .text {
       position: absolute;
       left: 0;
@@ -600,7 +613,8 @@ body {
       background-image: url("../img/index/03_cheers/another_hand.png");
       background-position: center top;
       background-size: 100% auto;
-      background-repeat: no-repeat; }
+      background-repeat: no-repeat;
+      z-index: 0; }
 
 @keyframes cheer {
   0% {
@@ -615,10 +629,28 @@ body {
     transform: translateX(425px) rotate(5deg); }
   to {
     transform: translateX(600px); } }
-      #cheers .block.block--two .another-hand.cheered {
+      #cheers .block.block--two .another-hand.cheer {
         animation: cheer .2s linear forwards; }
       #cheers .block.block--two .another-hand.back {
         animation: back .3s linear forwards; }
+    #cheers .block.block--two .foam {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+      top: -120px;
+      width: 352px;
+      height: 281px;
+      background-image: url("../img/index/03_cheers/foam.png");
+      background-position: center top;
+      background-size: 100% auto;
+      background-repeat: no-repeat;
+      z-index: 2;
+      transform: scale(0);
+      transform-origin: center bottom;
+      transition: all .3s linear; }
+      #cheers .block.block--two .foam.show {
+        transform: scale(1); }
 
 #campaign {
   background-image: url("../img/index/04_campaign/background.png");

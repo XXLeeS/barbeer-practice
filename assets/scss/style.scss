@@ -67,6 +67,15 @@ $background_width: 1920px;
         @include full-image();
         opacity: 0;
     }
+    .beer-shadow{
+        @include absolute-center();
+        top: -580px;
+        transform: translateX(10px);
+        width: 332px;
+        height: 552px;
+        background-image: url("../img/index/02_feature/beer_shadow.png");     
+        @include full-image();
+    }
     .feature-container{
         @include absolute-center();
         top: 220px;        
@@ -142,6 +151,7 @@ $background_width: 1920px;
 
         &.block--one{
             background-image: url("../img/index/03_cheers/background_1.png");
+            z-index: 1;
 
             .text{
                 @include absolute-center();
@@ -181,7 +191,7 @@ $background_width: 1920px;
         }
         &.block--two{
             background-image: url("../img/index/03_cheers/background_2.png");
-            overflow: hidden;
+            
             .text{
                 @include absolute-center();
                 top: 50px;
@@ -203,6 +213,7 @@ $background_width: 1920px;
                 height: 813px;
                 background-image: url("../img/index/03_cheers/another_hand.png");
                 @include full-image();
+                z-index: 0;
 
                 @keyframes cheer{
                     0%{
@@ -223,11 +234,27 @@ $background_width: 1920px;
                         transform: translateX(600px);
                     }
                 }
-                &.cheered{
+                &.cheer{
                     animation: cheer .2s linear forwards;
                 }
                 &.back{
                     animation: back .3s linear forwards;
+                }
+            }
+            .foam{
+                @include absolute-center();
+                top: -120px;
+                width: 352px;
+                height: 281px;
+                background-image: url("../img/index/03_cheers/foam.png");
+                @include full-image();
+                z-index: 2;
+                transform: scale(0);
+                transform-origin: center bottom;
+                transition: all .3s linear;
+
+                &.show{
+                    transform: scale(1);
                 }
             }
         }

@@ -44,9 +44,9 @@ window.addEventListener('scroll', (e) => {
         let left = banner_text.querySelector('.text--left');
         let right = banner_text.querySelector('.text--right');
 
-        let upperBound = -20;
-        let lowerBound = -150;
-        let offset = 100;
+        let upperBound = 150;
+        let lowerBound = 0;
+        let offset = 95;
 
         if(isInRegion(banner_text, upperBound, lowerBound)){
             left.style.transform = `translateX(${offset*getOffsetPercent(banner_text, upperBound, lowerBound)}px)`;
@@ -72,6 +72,24 @@ window.addEventListener('scroll', (e) => {
             feature_title.style.opacity = 1;
         }else{
             feature_title.removeAttribute('style');            
+        }
+    }
+
+    // feature beer shadow
+    {
+        let beer_shadow = document.querySelector('#feature .beer-shadow')
+
+        let upperBound = -getOffsetTopAbs(document.querySelector('#feature')) + 800;
+        let lowerBound = -getOffsetTopAbs(document.querySelector('#cheers'));
+        let cssTranslateX = 10;
+
+        if(isInRegion(document.body, upperBound, lowerBound)){
+            let offset = -(document.body.getBoundingClientRect().top - upperBound);
+            beer_shadow.style.transform = `translate(${cssTranslateX}px, ${offset}px)`;
+        }else if(isEndRegion(document.body, lowerBound)){
+            // beer_shadow.style.transform = `translate(${cssTranslateX}px, ${offset}px)`;
+        }else{
+            beer_shadow.removeAttribute('style');
         }
     }
 
@@ -140,22 +158,42 @@ window.addEventListener('scroll', (e) => {
     // another hand cheers
     {
         let another_hand = document.querySelector(`#cheers .another-hand`);
+        let foam = document.querySelector('#cheers .foam');    
+        console.log(foam)    
 
         let lowerBound = -getOffsetTopAbs(document.querySelector('#cheers .block--two')) + 100;
         
         if(isEndRegion(document.body, lowerBound)){
             another_hand.classList.remove('back');
-            another_hand.classList.add('cheered');
+            another_hand.classList.add('cheer');
+            another_hand.addEventListener("webkitAnimationEnd", (event) => {
+                if(event.animationName == 'cheer'){
+                    foam.classList.add('show');
+                }
+            });
         }else{
             another_hand.classList.add('back');
+            foam.classList.remove('show');
             another_hand.addEventListener("webkitAnimationEnd", (event) => {
                 if(event.animationName == 'back'){
-                    another_hand.classList.remove('cheered');
+                    another_hand.classList.remove('cheer');
                 }
             });
         }
     }
 
+    // foam appear
+    // function showFoam(){
+    //     let foam = document.querySelector('#cheers .foam');
+
+
+    // }
+    // function hideFoam(){
+    //     let foam = document.querySelector('#cheers .foam');
+    //     foam.
+    // }
+
+    // cheers text fade
     document.querySelectorAll('#cheers .text p').forEach((el) => {
         let upperBound = 400;
         let lowerBound = 300;
@@ -168,5 +206,7 @@ window.addEventListener('scroll', (e) => {
             el.removeAttribute('style');
         }
     })
+
+    
 });
 
