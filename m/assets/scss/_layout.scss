@@ -1,0 +1,25 @@
+// @import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+@font-face{
+    font-family: 'Noto Sans TC Bold';
+    src: url("../font/NotoSansTC-Bold.otf")
+
+}
+
+html *{
+    font-family: 'Noto Sans TC Bold';
+}
+
+body{
+    overflow-x: hidden;
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+.container{
+    width: 100vw;
+
+    .row{
+        position: relative;
+        width: 100vw;
+        overflow: hidden;
+    }
+}

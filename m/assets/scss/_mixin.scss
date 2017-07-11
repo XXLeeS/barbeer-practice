@@ -1,0 +1,28 @@
+@mixin full-image($width: 100%){
+    background-position: center top;
+    background-size: $width auto;
+    background-repeat: no-repeat;
+}
+
+@mixin absolute-center{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+@mixin flex-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin white-mask($width: 100%, $height: 100%){
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $width;
+    height: $height;
+    content: "";
+    background-color: #fff; 
+}
