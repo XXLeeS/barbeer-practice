@@ -21,7 +21,9 @@
 
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
+<body class="loading">
+	<div id="drink_is_good"></div>
+
     <div class="container">
         <div id="banner" class="row">
             <div class="text-container">
@@ -85,9 +87,7 @@
 			<div class="title"></div>
 
 			<div class="slideshow-block">
-				<!--<div class="arrow arrow--left"></div>
-				<div class="arrow arrow--right"></div>-->
-				<!--<div class="product-container">
+				<div class="product-container">
 					<a href="#">
 						<div class="product product--one"></div>
 					</a>
@@ -100,9 +100,50 @@
 					<a href="#">
 						<div class="product product--four"></div>
 					</a>
-				</div>-->
+				</div>
 			</div>
 		</div>
-    </div>
+
+		<div id="tvcm" class="row">
+			<div class="title"></div>
+
+			<div class="slideshow-block">
+				<div class="swiper-container" style="width: 100%;">
+					<!-- Additional required wrapper -->
+					<div class="swiper-wrapper">
+						<!-- Slides -->
+						<a class="swiper-slide cm" href="#">
+							<div class="cm__image">
+								<img src="assets/img/index/06_tvcm/cm_1.png" alt="詠動篇">
+								<div class="play"></div>
+							</div>
+							<div class="cm__name">詠動篇</div>
+						</a>
+						<a class="swiper-slide cm" href="#">
+							<div class="cm__image">
+								<img src="assets/img/index/06_tvcm/cm_1.png" alt="詠動篇">
+								<div class="play"></div>
+							</div>
+							<div class="cm__name">詠動篇</div>
+						</a>
+					</div>
+					<div class="swiper-pagination cm__pagination"></div>
+				</div>
+			</div>
+		</div>
+
+		<div id="social" class="row">
+			<div class="link-container">
+				<a href="#" class="link-btn">
+					<img src="assets/img/index/07_social/ig.png" alt="instagram">
+				</a>
+				<a href="#" class="link-btn">
+					<img src="assets/img/index/07_social/fb.png" alt="instagram">
+				</a>
+			</div>
+		</div>
+	</div>
+	
+	<script src="assets/build/bundle.js"></script>
 </body>
 </html>

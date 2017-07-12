@@ -6,6 +6,7 @@
  * 2. Prevent adjustments of font size after orientation changes in
  *    IE on Windows Phone and in iOS.
  */
+@import url(../../../node_modules/swiper/dist/css/swiper.min.css);
 html {
   line-height: 1.15;
   /* 1 */
@@ -407,13 +408,36 @@ body {
     width: 100vw;
     overflow: hidden; }
 
+body {
+  background-color: #fbfbfb; }
+
+body.loading {
+  overflow: hidden; }
+
+#drink_is_good {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 375px;
+  height: 48px;
+  background-image: url("../img/index/drink.png");
+  background-position: center top;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  z-index: 10; }
+
 #banner {
   position: relative;
   background-image: url("../img/index/01_banner/background.png");
   background-position: center top;
   background-size: 375px auto;
   background-repeat: no-repeat;
-  height: 100vh; }
+  height: 100vh;
+  transform: translateY(200px);
+  transition: transform .3s ease;
+  transition-delay: .5s; }
+  #banner.scroll {
+    transform: translateY(0); }
   #banner .text-container {
     position: absolute;
     left: 0;
@@ -430,46 +454,62 @@ body {
       height: 100%;
       background-position: center top;
       background-size: 100% auto;
-      background-repeat: no-repeat; }
+      background-repeat: no-repeat;
+      transform: scale(2);
+      opacity: 0;
+      transition: all .05s linear; }
+      #banner .text-container .text.show {
+        transform: scale(1);
+        opacity: 1; }
       #banner .text-container .text.text--one {
-        background-image: url("../img/index/01_banner/text_1.png"); }
+        background-image: url("../img/index/01_banner/text_1.png");
+        transition-delay: 0s; }
       #banner .text-container .text.text--two {
-        background-image: url("../img/index/01_banner/text_2.png"); }
+        background-image: url("../img/index/01_banner/text_2.png");
+        transition-delay: .3s; }
       #banner .text-container .text.text--three {
-        background-image: url("../img/index/01_banner/text_3.png"); }
+        background-image: url("../img/index/01_banner/text_3.png");
+        transition-delay: .33s; }
       #banner .text-container .text.text--four {
-        background-image: url("../img/index/01_banner/text_4.png"); }
+        background-image: url("../img/index/01_banner/text_4.png");
+        transition-delay: .36s; }
   #banner .hand-container {
     position: absolute;
     left: 0;
     right: 0;
     margin: auto;
-    top: 180px;
+    bottom: 0;
     width: 100vw;
     height: 485px; }
     #banner .hand-container .hand {
       position: absolute;
       background-position: center top;
       background-size: 100% auto;
-      background-repeat: no-repeat; }
+      background-repeat: no-repeat;
+      transition: transform .2s ease-out; }
+      #banner .hand-container .hand.cheer {
+        transform: translate(0, 0) !important; }
       #banner .hand-container .hand.hand--left {
         left: 0;
         top: 0;
         width: 207px;
         height: 363px;
-        background-image: url("../img/index/01_banner/hand_l.png"); }
+        background-image: url("../img/index/01_banner/hand_l.png");
+        transform: translate(-100%, 0); }
       #banner .hand-container .hand.hand--right {
         right: 0;
         top: 80px;
         width: 197px;
         height: 342px;
-        background-image: url("../img/index/01_banner/hand_r.png"); }
+        background-image: url("../img/index/01_banner/hand_r.png");
+        transform: translate(100%, 0); }
       #banner .hand-container .hand.hand--middle {
         left: 0;
         bottom: 0;
         width: 250px;
         height: 389px;
-        background-image: url("../img/index/01_banner/hand_m.png"); }
+        background-image: url("../img/index/01_banner/hand_m.png");
+        transform: translate(-100%, 100%); }
 
 #feature {
   background-image: url("../img/index/02_feature/background.png");
@@ -604,7 +644,7 @@ body {
   background-size: 375px auto;
   background-repeat: no-repeat; }
   #campaign .title {
-    margin: 30px auto;
+    margin: 30px auto 15px;
     width: 144px;
     height: 42px;
     background-image: url("../img/index/04_campaign/title.png");
@@ -612,7 +652,7 @@ body {
     background-size: 100% auto;
     background-repeat: no-repeat; }
   #campaign .button {
-    margin: 0 auto 30px;
+    margin: 0 auto 20px;
     width: 336px;
     height: 180px;
     background-image: url("../img/index/04_campaign/button_1.png");
@@ -636,10 +676,9 @@ body {
   background-image: url("../img/index/05_lineup/background.png");
   background-position: center top;
   background-size: 375px auto;
-  background-repeat: no-repeat;
-  height: 483px; }
+  background-repeat: no-repeat; }
   #lineup .title {
-    margin: 30px auto;
+    margin: 30px auto 15px;
     width: 106px;
     height: 43px;
     background-image: url("../img/index/05_lineup/title.png");
@@ -647,17 +686,15 @@ body {
     background-size: 100% auto;
     background-repeat: no-repeat; }
   #lineup .slideshow-block {
-    margin: 0 auto 30px;
-    width: 300px;
-    height: 250px;
+    margin: 0 auto 20px;
+    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center; }
     #lineup .slideshow-block .product-container {
-      width: 750px;
-      height: 100%;
+      width: 310px;
       display: flex;
-      align-items: center;
+      flex-wrap: wrap;
       justify-content: center; }
       #lineup .slideshow-block .product-container .product {
         position: relative;
@@ -665,8 +702,8 @@ body {
         background-position: center top;
         background-size: 100% auto;
         background-repeat: no-repeat;
-        width: 178px;
-        height: 216px;
+        width: 144px;
+        height: 184px;
         margin: 4px; }
         #lineup .slideshow-block .product-container .product:after {
           position: absolute;
@@ -693,105 +730,71 @@ body {
   background-image: url("../img/index/06_tvcm/background.png");
   background-position: center top;
   background-size: 375px auto;
-  background-repeat: no-repeat;
-  height: 535px; }
+  background-repeat: no-repeat; }
   #tvcm .title {
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    top: 70px;
-    width: 98px;
-    height: 53px;
+    margin: 30px auto 15px;
+    width: 75px;
+    height: 42px;
     background-image: url("../img/index/06_tvcm/title.png");
     background-position: center top;
     background-size: 100% auto;
     background-repeat: no-repeat; }
   #tvcm .slideshow-block {
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    top: 170px;
-    width: 950px;
-    height: 250px;
+    margin-bottom: 20px;
+    width: 100vw; }
+    #tvcm .slideshow-block .cm {
+      text-decoration: none; }
+      #tvcm .slideshow-block .cm .cm__image {
+        position: relative;
+        width: 336px;
+        height: 180px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center; }
+        #tvcm .slideshow-block .cm .cm__image img {
+          width: 100%;
+          height: 100%; }
+        #tvcm .slideshow-block .cm .cm__image .play {
+          position: absolute;
+          left: 0;
+          right: 0;
+          margin: auto;
+          top: 0;
+          bottom: 0;
+          width: 55px;
+          height: 55px;
+          background-image: url("../img/index/06_tvcm/play.png");
+          background-position: center top;
+          background-size: 100% auto;
+          background-repeat: no-repeat;
+          z-index: 2; }
+      #tvcm .slideshow-block .cm .cm__name {
+        text-align: center;
+        color: #9e6a06;
+        font-weight: 800;
+        padding: 10px 0; }
+    #tvcm .slideshow-block .cm__pagination {
+      position: relative;
+      bottom: 0; }
+      #tvcm .slideshow-block .cm__pagination .swiper-pagination-bullet {
+        background-color: #fff;
+        opacity: .7; }
+        #tvcm .slideshow-block .cm__pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+          background-color: #9e6a06; }
+
+#social {
+  background-color: #e5e0c2; }
+  #social .link-container {
+    padding: 30px 20px;
     display: flex;
     align-items: center;
     justify-content: center; }
-    #tvcm .slideshow-block .cm-container {
-      width: 780px;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center; }
-      #tvcm .slideshow-block .cm-container .cm {
-        position: relative;
-        height: 100%;
-        margin: 0 15px;
-        text-decoration: none; }
-        #tvcm .slideshow-block .cm-container .cm .cm__image {
-          position: relative;
-          width: 364px;
-          height: 243px;
-          background-color: #d09d00;
-          display: flex;
-          align-items: center;
-          justify-content: center; }
-          #tvcm .slideshow-block .cm-container .cm .cm__image:before {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 364px;
-            height: 243px;
-            content: "";
-            background-color: #9e6a06;
-            opacity: .3;
-            transition: opacity .3s ease; }
-          #tvcm .slideshow-block .cm-container .cm .cm__image:hover:before {
-            opacity: 0; }
-          #tvcm .slideshow-block .cm-container .cm .cm__image img {
-            width: 349px;
-            height: 228px; }
-          #tvcm .slideshow-block .cm-container .cm .cm__image .play {
-            position: absolute;
-            left: 0;
-            right: 0;
-            margin: auto;
-            top: 0;
-            bottom: 0;
-            width: 62px;
-            height: 62px;
-            background-image: url("../img/index/06_tvcm/play.png");
-            background-position: center top;
-            background-size: 100% auto;
-            background-repeat: no-repeat; }
-        #tvcm .slideshow-block .cm-container .cm .cm__name {
-          text-align: center;
-          color: #9e6a06;
-          font-size: 18px;
-          font-weight: 800;
-          padding: 10px 0; }
-
-#social {
-  background-color: #e5e0c2;
-  height: 280px;
-  display: flex;
-  align-items: center;
-  justify-content: center; }
-  #social .link-btn {
-    position: relative;
-    width: 455px;
-    height: 100px;
-    margin: 0px 15px; }
-    #social .link-btn:after {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 455px;
-      height: 100px;
-      content: "";
-      background-color: #fff;
-      opacity: 0;
-      transition: opacity .3s ease; }
-    #social .link-btn:hover:after {
-      opacity: .3; }
+    #social .link-container .link-btn {
+      position: relative;
+      width: 166px;
+      height: 88px;
+      margin: 0px 5px; }
+      #social .link-container .link-btn img {
+        width: 100%;
+        height: auto; }
