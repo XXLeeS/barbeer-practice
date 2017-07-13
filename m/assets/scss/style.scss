@@ -10,9 +10,9 @@
 
 $background_width: 375px;
 
-body{
-    background-color: #fbfbfb;
-}
+// body{
+//     background-color: #fbfbfb;
+// }
 body.loading{
     overflow: hidden;
 }
@@ -148,6 +148,13 @@ body.loading{
             @include full-image();
             margin: auto;
             margin-bottom: 25px;
+            opacity: 0;
+            transition: opacity .3s ease;
+
+            &.show{
+                opacity: 1;
+            }
+
 
             &.feature--one{
                 width: 286px;
@@ -177,15 +184,23 @@ body.loading{
         overflow: hidden;
 
         .text{
-            @include absolute-center();
+            position: absolute;
+            left: 30px;
             top: 25px;
             width: 150px;
-            transform: translateX(-70px);
             font-size: 20px;
             font-style: italic;
 
             p{
                 margin: 10px 0;
+                opacity: 0;
+                transform: translateX(-10px);
+                transition: all .2s ease;
+
+                &.show{
+                    opacity: 1;
+                    transform: translateX(0);
+                }
             }
         }
         .my-hand-wrapper{
@@ -215,13 +230,13 @@ body.loading{
                 @include full-image();
                 background-image: url("../img/index/03_cheers/foam.png");
                 z-index: 2;
-                // transform: scale(0);
-                // transform-origin: center bottom;
-                // transition: all .3s linear;
+                transform: scale(0);
+                transform-origin: center bottom;
+                transition: all .3s linear;
 
-                // &.show{
-                //     transform: scale(1);
-                // }
+                &.show{
+                    transform: scale(1);
+                }
             }
         }
         &.block--one{
@@ -239,31 +254,22 @@ body.loading{
                 background-image: url("../img/index/03_cheers/another_hand.png");
                 @include full-image();
                 z-index: 1;
+                transform: translateX(100px);
 
-                @keyframes cheer{
-                    0%{
-                        transform: translateX(600px);
-                    }
-                    50%{
-                        transform: translateX(375px);
-                    }
-                    100%{
-                        transform: translateX(450px) rotate(5deg);
-                    }
-                }
-                @keyframes back{
-                    from{
-                        transform: translateX(425px) rotate(5deg);
-                    }
-                    to{
-                        transform: translateX(600px);
-                    }
-                }
                 &.cheer{
                     animation: cheer .2s linear forwards;
                 }
-                &.back{
-                    animation: back .3s linear forwards;
+
+                @keyframes cheer{
+                    0%{
+                        transform: translateX(100px);
+                    }
+                    50%{
+                        transform: translateX(0);
+                    }
+                    100%{
+                        transform: translateX(50px) rotate(5deg);
+                    }
                 }
             }
         }

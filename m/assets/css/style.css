@@ -408,9 +408,6 @@ body {
     width: 100vw;
     overflow: hidden; }
 
-body {
-  background-color: #fbfbfb; }
-
 body.loading {
   overflow: hidden; }
 
@@ -541,7 +538,11 @@ body.loading {
       background-size: 100% auto;
       background-repeat: no-repeat;
       margin: auto;
-      margin-bottom: 25px; }
+      margin-bottom: 25px;
+      opacity: 0;
+      transition: opacity .3s ease; }
+      #feature .feature-container .feature.show {
+        opacity: 1; }
       #feature .feature-container .feature.feature--one {
         width: 286px;
         height: 117px;
@@ -565,16 +566,19 @@ body.loading {
   overflow: hidden; }
   #cheers .block .text {
     position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
+    left: 30px;
     top: 25px;
     width: 150px;
-    transform: translateX(-70px);
     font-size: 20px;
     font-style: italic; }
     #cheers .block .text p {
-      margin: 10px 0; }
+      margin: 10px 0;
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: all .2s ease; }
+      #cheers .block .text p.show {
+        opacity: 1;
+        transform: translateX(0); }
   #cheers .block .my-hand-wrapper {
     position: absolute;
     left: 0;
@@ -603,7 +607,12 @@ body.loading {
       background-size: 100% auto;
       background-repeat: no-repeat;
       background-image: url("../img/index/03_cheers/foam.png");
-      z-index: 2; }
+      z-index: 2;
+      transform: scale(0);
+      transform-origin: center bottom;
+      transition: all .3s linear; }
+      #cheers .block .my-hand-wrapper .foam.show {
+        transform: scale(1); }
   #cheers .block.block--one {
     background-image: url("../img/index/03_cheers/background_1.png"); }
   #cheers .block.block--two {
@@ -618,25 +627,18 @@ body.loading {
       background-position: center top;
       background-size: 100% auto;
       background-repeat: no-repeat;
-      z-index: 1; }
+      z-index: 1;
+      transform: translateX(100px); }
+      #cheers .block.block--two .another-hand.cheer {
+        animation: cheer .2s linear forwards; }
 
 @keyframes cheer {
   0% {
-    transform: translateX(600px); }
+    transform: translateX(100px); }
   50% {
-    transform: translateX(375px); }
+    transform: translateX(0); }
   100% {
-    transform: translateX(450px) rotate(5deg); } }
-
-@keyframes back {
-  from {
-    transform: translateX(425px) rotate(5deg); }
-  to {
-    transform: translateX(600px); } }
-      #cheers .block.block--two .another-hand.cheer {
-        animation: cheer .2s linear forwards; }
-      #cheers .block.block--two .another-hand.back {
-        animation: back .3s linear forwards; }
+    transform: translateX(50px) rotate(5deg); } }
 
 #campaign {
   background-image: url("../img/index/04_campaign/background.png");

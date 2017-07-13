@@ -1,10 +1,14 @@
 
-function isInRegion(el, upperBound, lowerBound){
-    return el.getBoundingClientRect().top <= upperBound && el.getBoundingClientRect().top > lowerBound;
+// function isInRegion(el, upperBound, lowerBound){
+//     return el.getBoundingClientRect().top <= upperBound && el.getBoundingClientRect().top > lowerBound;
+// }
+// function isEndRegion(el, lowerBound){
+//     return el.getBoundingClientRect().top <= lowerBound;
+// }
+function isScrollOver(el, offset){
+    return el.getBoundingClientRect().top < offset;
 }
-function isEndRegion(el, lowerBound){
-    return el.getBoundingClientRect().top <= lowerBound;
-}
+
 function getOffsetPercent(el, top, bottom){
     return (top - el.getBoundingClientRect().top) / (top - bottom);
 }
@@ -40,16 +44,64 @@ window.onload = function(){
     window.addEventListener('transitionend', (event) => {
         if(event.target.classList.contains('text--four')){
             document.querySelector('#banner').classList.add('scroll')
-            document.body.classList.remove('loading')
         }
         if(event.target.id == 'banner'){
             document.querySelectorAll('#banner .hand').forEach((el) => {
-                console.log(el)
                 el.classList.add('cheer'); 
+                document.body.classList.remove('loading');
             })           
         }
     })
 }
+
+window.addEventListener('scroll', () => {
+    document.querySelectorAll('#feature .feature').forEach((el, i) => {
+        let offset = 400;
+
+        if(isScrollOver(el, offset)){
+            el.classList.add('show');
+        }
+    });
+
+    document.querySelectorAll('#cheers .text').forEach((el, i) => {
+        let offset = 400;
+
+        if(isScrollOver(el, offset)){
+            el.querySelectorAll('p').forEach((line, i) => {
+                setTimeout(() => {
+                    line.classList.add('show');
+                }, i*200);
+            })
+        }
+    });
+
+    window.addEventListener('transitionend', (event) => {
+        if(event.target.classList.contains('text--four')){
+            document.querySelector('#banner').classList.add('scroll')
+        }
+        if(event.target.id == 'banner'){
+            document.querySelectorAll('#banner .hand').forEach((el) => {
+                el.classList.add('cheer'); 
+                document.body.classList.remove('loading');
+            })           
+        }
+    })
+
+    window.addEventListener('transitionend', (event) => {
+        console.log(event.target.id)
+        if(event.target.id == 'last_line'){
+            document.querySelector('#cheers .another-hand').classList.add('cheer');
+        }
+    });
+
+    window.addEventListener('animationend', (event) => {
+        console.log(event)
+        if(event.animationName == 'cheer'){
+            document.querySelector('#cheers .foam').classList.add('show');
+        }
+    })
+
+})
 
 
 // window.addEventListener('scroll', (e) => {
