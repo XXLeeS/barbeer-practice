@@ -167,8 +167,11 @@ $background_width: 1920px;
                 }
             }
             .hand-wrapper{
-                    @include absolute-center();
+                    position: absolute;
                     top: 100px;
+                    left: 0;
+                    right: 0;
+                    margin: 0 calc((100vw - 1189px)/2);
                     width: 1189px;
                     height: 963px;
                     transform: translateX(-525px);

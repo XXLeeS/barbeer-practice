@@ -565,10 +565,10 @@ body {
         opacity: 0; }
     #cheers .block.block--one .hand-wrapper {
       position: absolute;
+      top: 100px;
       left: 0;
       right: 0;
-      margin: auto;
-      top: 100px;
+      margin: 0 calc((100vw - 1189px)/2);
       width: 1189px;
       height: 963px;
       transform: translateX(-525px);
