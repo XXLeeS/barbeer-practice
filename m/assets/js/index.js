@@ -73,6 +73,17 @@ window.addEventListener('animationend', (event) => {
     }
 })
 
+window.addEventListener('resize', () => {
+    if(window.innerHeight < window.innerWidth){
+        document.body.classList.add('loading');
+        document.querySelector('#rotate_block').style.display = 'block';
+    }
+    else{
+        document.body.classList.remove('loading');
+        document.querySelector('#rotate_block').removeAttribute('style');
+    }
+})
+
 //force scroll to top on refresh page
 window.onbeforeunload = () => {
     window.scrollTo(0, 0);

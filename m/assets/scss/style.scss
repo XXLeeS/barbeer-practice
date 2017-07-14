@@ -28,6 +28,18 @@ body.loading{
     z-index: 10;
 }
 
+#rotate_block{
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+    font-size: 100px;
+    font-weight: 900;
+    text-align: center;
+    display: none;
+    z-index: 100;
+    position: fixed;
+}
+
 #banner{
     position: relative;
     background-image: url("../img/index/01_banner/background.png");
@@ -294,14 +306,14 @@ body.loading{
         background-image: url("../img/index/04_campaign/button_1.png");     
         @include full-image();
 
-        &:after{
-            @include white-mask();
-            opacity: 0;
-            transition: all .3s ease;
-        }
-        &:hover:after{
-            opacity: .3;
-        }
+        // &:after{
+        //     @include white-mask();
+        //     opacity: 0;
+        //     transition: all .3s ease;
+        // }
+        // &:hover:after{
+        //     opacity: .3;
+        // }
     }
 }
 
@@ -336,14 +348,14 @@ body.loading{
                 height: 184px;
                 margin: 4px;
 
-                &:after{
-                    @include white-mask(178px, 216px);
-                    opacity: 0;
-                    transition: opacity .3s ease;
-                }
-                &:hover:after{
-                    opacity: .3;
-                }
+                // &:after{
+                //     @include white-mask(178px, 216px);
+                //     opacity: 0;
+                //     transition: opacity .3s ease;
+                // }
+                // &:hover:after{
+                //     opacity: .3;
+                // }
                 
                 &.product--one{
                     background-image: url("../img/index/05_lineup/product_1.png");
