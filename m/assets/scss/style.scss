@@ -54,6 +54,20 @@ body.loading{
         transform: translateY(0);
     }
 
+    .share{
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        width: 46px;
+        height: 59px;
+        background-image: url("../img/index/01_banner/share.png");
+        @include full-image();
+        transition: opacity .3s ease;
+
+        &:hover{
+            opacity: .7;
+        }
+    }
     .text-container{
         @include absolute-center();
         top: 75px;

@@ -428,6 +428,22 @@ body {
   background-size: 1920px auto;
   background-repeat: no-repeat;
   height: 900px; }
+  #banner .share {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 100px;
+    transform: translateX(400px);
+    width: 46px;
+    height: 59px;
+    background-image: url("../img/index/01_banner/share.png");
+    background-position: center top;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    transition: opacity .3s ease; }
+    #banner .share:hover {
+      opacity: .7; }
   #banner .text-container {
     position: absolute;
     left: 0;

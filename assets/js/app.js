@@ -1,2 +1,2 @@
-// let Waypoint = require('waypoints/lib/noframework.waypoints');
 require('./index.js');
+require('./ga.js');
